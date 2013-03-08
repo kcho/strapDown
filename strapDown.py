@@ -6,8 +6,8 @@ import re
 
 def main(textfiles,option):
 
-    toWriteBeg='<!DOCTYPE html><html><xmp theme="{superhero}" style="display:non;">\n'.format(superhero=option)
-    toWriteEnd='</xmp><script src="http://strapdownjs.com/v/0.2/strapdown.js"></script></html>'
+    toWriteBeg='<!DOCTYPE html>\n<html>\n<xmp theme="{superhero}" style="display:non;">\n'.format(superhero=option)
+    toWriteEnd='\n</xmp>\n<script src="http://strapdownjs.com/v/0.2/strapdown.js">\n</script>\n</html>'
     preEditText=open(textfiles,'r').read()
     newText=open('.new','w')
     newText.write(toWriteBeg+preEditText+toWriteEnd)
@@ -37,7 +37,7 @@ option =
     argparser.add_argument("--md","-md",metavar='Mard down files', help='''
     Markdown text file
     ''')
-    argparser.add_argument("--option","-option",metavar='option')
+    argparser.add_argument("--option","-option",metavar='option',default='journal')
     argparser.add_argument("--html","-html",metavar='html file that you want to change style')
 
     args = argparser.parse_args()
@@ -50,6 +50,9 @@ option =
     you have to specify the option
     '''
             exit(0)
+    if args.html and args.option:
+        change(args.html,args.option)
+
 
 
 
