@@ -14,7 +14,7 @@ def main(textfiles,option):
     newText.close()
 
     os.system('mv {0} {1}'.format('.new',textfiles.split('.')[0]+'.html'))
-    os.system('rm {0}'.format(textfiles))
+    #os.system('rm {0}'.format(textfiles))
 
 def change(html,option):
     text=open(html,'r').read()
@@ -34,24 +34,20 @@ option =
     'cyborg','journal','readable','simplex',
     'slate','spacelab','spruce','superheror',united',
 ''',epilog="Kevin Cho 2012_03_05")
-    argparser.add_argument("--md","-md",metavar='Mard down files', help='''
+    argparser.add_argument("--input","-input",metavar='Mard down or text files', help='''
     Markdown text file
     ''')
     argparser.add_argument("--option","-option",metavar='option',default='journal')
     argparser.add_argument("--html","-html",metavar='html file that you want to change style')
 
     args = argparser.parse_args()
-    if args.md:
-        print args.md
-        main(args.md,args.option)
+    if args.input:
+        print 'a copy of {0} will be produced in html'.format(args.input)
+        main(args.input,args.option)
     if args.html and not args.option:
             print '''
-    If you want to change existing html file,
-    you have to specify the option
-    '''
-            exit(0)
-    if args.html and args.option:
-        change(args.html,args.option)
+    If you want to change existing html file, you have to specify the option ''' exit(0) if args.html and args.option: change(args.html,args.option)
+
 
 
 
