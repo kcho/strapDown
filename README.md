@@ -1,10 +1,6 @@
-#Creates html strapdwon java file
-#from markdown text files
-```
-strapDown.py --md {markDownFile}
-#or
-strapDown.py --md {markDownFile} --option {option}
-```
+#Creates Java strap-down html file from markdown text files
+
+-----
 
 ##option =
     one of
